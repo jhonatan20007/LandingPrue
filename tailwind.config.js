@@ -7,32 +7,38 @@ export default {
   theme: {
     extend: {
       colors: {
-        color: {
-          1: "#AC6AFF",
-          2: "#FFC876",
-          3: "#FF776F",
-          4: "#7ADB78",
-          5: "#858DFF",
-          6: "#FF98E2",
+        primary: "#166FFA", // Azul principal, claro y vibrante
+        secondary: "#FAFAFA", // Gris muy claro para fondos y superficies
+        accent: "#FF6347", // Un toque de color vibrante, como un coral o rojo tomate
+        background: {
+          default: "#FFFFFF", // Fondo principal blanco
+          light: "#F9F9F9", // Un gris claro para secciones o fondo alternativo
         },
         stroke: {
-          1: "#26242C",
+          // Colores para bordes o líneas
+          1: "#d1d1d1", // Gris claro para bordes visibles pero sutiles
+        },
+        text: {
+          default: "#333333", // Gris oscuro para la mayoría del texto
+          muted: "#666666", // Gris medio para texto menos prominente
         },
         n: {
-          1: "#FFFFFF",
-          2: "#CAC6DD",
-          3: "#ADA8C3",
-          4: "#757185",
-          5: "#3F3A52",
-          6: "#252134",
-          7: "#15131D",
-          8: "#0E0C15",
-          9: "#474060",
-          10: "#43435C",
-          11: "#1B1B2E",
-          12: "#2E2A41",
-          13: "#6C7275",
+          // Escala de grises para fondos y componentes
+          1: "#000", // Blanco
+          2: "#fafafa", // Nuevo gris más claro que el original
+          3: "#f5f5f5", // Gris claro
+          4: "#eeeeee", // Gris medio
+          5: "#e0e0e0", // Gris
+          6: "#d6d6d6", // Gris oscuro
+          7: "#cccccc", // Más gris oscuro
+          8: "#ffffff", // Aún más gris oscuro
+          9: "#b8b8b8", // Cercano a negro
+          10: "#aeaeae", // Gris muy oscuro
+          11: "#a4a4a4", // Más cercano a negro
+          12: "#9a9a9a", // Casi negro
+          13: "#909090", // Prácticamente negro
         },
+        border: "#E0E0E0", // Gris claro para bordes y divisiones
       },
       fontFamily: {
         sans: ["var(--font-sora)", ...fontFamily.sans],
@@ -69,7 +75,7 @@ export default {
       backgroundImage: {
         "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",
         "conic-gradient":
-          "conic-gradient(from 225deg, #FFC876, #79FFF7, #9F53FF, #FF98E2, #FFC876)",
+          "conic-gradient(from 225deg, var(--primary), var(--secondary), var(--background-default))",
       },
     },
   },
