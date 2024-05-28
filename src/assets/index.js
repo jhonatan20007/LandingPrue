@@ -10,6 +10,7 @@ import grid from "./grid.png";
 import check2 from "./check-02.svg";
 import loading1 from "./loading-01.svg";
 import yourlogo from "./yourlogo.svg";
+import Credidya from "./Credidya.svg";
 import homeSmile from "./home-smile.svg";
 import file02 from "./file-02.svg";
 import searchMd from "./search-md.svg";
@@ -146,4 +147,5 @@ export {
   telegram,
   twitter,
   Ipaid,
+  Credidya,
 };

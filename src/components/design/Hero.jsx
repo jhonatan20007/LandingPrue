@@ -95,6 +95,7 @@ export const BackgroundCircles = ({ parallaxRef }) => {
             }`}
           />
         </div>
+        <BottomLine />
       </MouseParallax>
     </div>
   );
