@@ -17,9 +17,9 @@ const App = () => {
         {/* BENEFITS */}
         <Benefits />
         {/* COLLABORATION */}
-        <Collaboration />
+        {/* <Collaboration /> */}
         {/* SERVICES */}
-        <Services />
+        {/* <Services /> */}
         {/* PRICING */}
         <Pricing />
         {/* FOOTER */}
