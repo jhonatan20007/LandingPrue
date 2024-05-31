@@ -11,6 +11,10 @@ import check2 from "./check-02.svg";
 import loading1 from "./loading-01.svg";
 import yourlogo from "./yourlogo.svg";
 import Credidya from "./Credidya.svg";
+import Cosmos from "./Cosmos.svg";
+import Serficenter from "./Serficenter.svg";
+import Softools from "./Softools.svg";
+import Universal from "./universal.svg";
 import homeSmile from "./home-smile.svg";
 import file02 from "./file-02.svg";
 import searchMd from "./search-md.svg";
@@ -148,4 +152,8 @@ export {
   twitter,
   Ipaid,
   Credidya,
+  Cosmos,
+  Serficenter,
+  Softools,
+  Universal,
 };

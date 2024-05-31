@@ -36,6 +36,10 @@ import {
   yourlogo,
   brainwave,
   Credidya,
+  Cosmos,
+  Serficenter,
+  Softools,
+  Universal,
 } from "../assets";
 
 export const navigation = [
@@ -79,10 +83,10 @@ export const notificationImages = [notification4, notification3, notification2];
 
 export const companyLogos = [
   Credidya,
-  brainwave,
-  brainwave,
-  brainwave,
-  brainwave,
+  Cosmos,
+  Serficenter,
+  Softools,
+  Universal,
 ];
 
 export const brainwaveServices = [
