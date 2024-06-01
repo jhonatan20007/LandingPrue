@@ -51,6 +51,7 @@ const Header = () => {
                   key={item.id}
                   href={item.url}
                   onClick={handleClick}
+                  target={item.id == "5" ? "_blank" : ""}
                   className={`block relative font-code text-2xl uppercase text-n-1 transition-colors
                  hover:text-color-1 ${
                    item.onlyMobile ? "lg:hidden" : ""

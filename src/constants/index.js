@@ -63,16 +63,16 @@ export const navigation = [
   //   title: "Roadmap",
   //   url: "#roadmap",
   // },
-  {
-    id: "4",
-    title: "New account",
-    url: "#signup",
-    onlyMobile: true,
-  },
+  // {
+  //   id: "4",
+  //   title: "New account",
+  //   url: "#signup",
+  //   onlyMobile: true,
+  // },
   {
     id: "5",
-    title: "Sign in",
-    url: "https://servicein.co/administrar/",
+    title: "Iniciar sesión",
+    url: "https://admin.ipaid.com.co/",
     onlyMobile: true,
   },
 ];

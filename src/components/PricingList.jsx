@@ -35,8 +35,8 @@ const PricingList = () => {
   };
 
   const ContactUs = (obj) => {
-    // fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Contacto`, {
-    fetch(`http://localhost:8080/IpaidLanding/Contacto`, {
+    fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Contacto`, {
+      // fetch(`http://localhost:8080/IpaidLanding/Contacto`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
