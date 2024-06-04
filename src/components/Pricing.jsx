@@ -29,7 +29,7 @@ const Pricing = () => {
         </div>
 
         <Heading
-          tag="Empieza con ipaid y descubre el poder de la automatización de pagos"
+          tag="Unete a ipaid y acepta pagos por internet, en persona o en tu plataforma"
           title="Contactanos para obtener más información sobre nuestros planes y precios."
         />
 

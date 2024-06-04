@@ -10,7 +10,7 @@ import grid from "./grid.png";
 import check2 from "./check-02.svg";
 import loading1 from "./loading-01.svg";
 import yourlogo from "./yourlogo.svg";
-import QR_Img from "./QR_Img.webp";
+import QR_Img from "./ipaidfondo.png";
 import Credidya from "./Credidya.svg";
 import Cosmos from "./Cosmos.svg";
 import Serficenter from "./Serficenter.svg";
