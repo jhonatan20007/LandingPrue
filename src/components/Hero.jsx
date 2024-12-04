@@ -29,7 +29,7 @@ const Hero = () => {
             </span>
             {/* &nbsp; {` `} */}
             <span className="inline-block relative">
-              Ipaid{" "}
+              iPaid{" "}
               <img
                 src={curve}
                 className="absolute top-full left-0 w-full xl:-mt-2"
