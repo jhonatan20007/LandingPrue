@@ -6,77 +6,123 @@ import Footer from "./components/Footer";
 
 const Register = () => {
   const [currentStep, setCurrentStep] = useState(0);
-
-  // const steps = [
-  //   {
-  //     title: 'How to create a Pagedone account?',
-  //     description:
-  //       'To create an account with several steps to collect user information, verify identity, and set up account preferences.',
-  //     details: [
-  //       'Register yourself',
-  //       'Validation',
-  //       'Email Verification',
-  //       'Account Activation',
-  //       'Profile Setup',
-  //       'Confirmation Message',
-  //     ],
-  //   },
-  //   {
-  //     title: 'Have any trust issues?',
-  //     description: 'Of course we are here to guide you.',
-  //   },
-  //   {
-  //     title: 'How can I reset my password?',
-  //     description:
-  //       'Go to your profile > Click Change Password > Enter previous password > Confirm Previous password and add your new password.',
-  //   },
-  // ];
-  
+  const [errors, setErrors] = useState({}); 
+  const [formData, setformData] = useState({});  
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setformData({
+      ...formData,
+      [name]: value,
+    });
+  };
   const steps = [
     {
       title: "Datos básicos",
       description: "Información del que registra.",
       form: (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        // <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className={`step-0 grid grid-cols-1 lg:grid-cols-2 gap-4`}>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              First Name
+              Nombre completo
             </label>
             <input
               type="text"
-              placeholder="John"
-              className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              name="fullName"
+              value={formData.fullName|| ""}
+              onChange={handleInputChange}
+              placeholder="John Perez"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.fullName ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
             />
+              {errors.fullName && <span className="text-base text-red-500">{errors.fullName}</span>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Last Name
+              Celular
             </label>
             <input
               type="text"
-              placeholder="Doe"
-              className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              name="celular"
+              value={formData.celular|| ""}
+              onChange={handleInputChange}
+              placeholder="3102387640"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.celular ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
             />
+               {errors.celular && <span className="text-base text-red-500">{errors.celular}</span>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Email
+              Correo electrónico
             </label>
             <input
               type="email"
+              name="correo"
+              value={formData.correo|| ""}
+              onChange={handleInputChange}
               placeholder="example@mail.com"
-              className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.correo ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
             />
+               {errors.correo && <span className="text-base text-red-500">{errors.correo}</span>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Password
+              Confirmar correo electrónico
+            </label>
+            <input
+              type="email"
+               name="ccorreo"
+               value={formData.ccorreo|| ""}
+              onChange={handleInputChange}
+              placeholder="example@mail.com"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.ccorreo ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+          />
+                 {errors.ccorreo && <span className="text-base text-red-500">{errors.ccorreo}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Contraseña
             </label>
             <input
               type="password"
+              name="password"
+              value={formData.password|| ""}
+              onChange={handleInputChange}
               placeholder="********"
-              className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.password ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+           />
+                {errors.password && <span className="text-base text-red-500">{errors.password}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Confirmar contraseña
+            </label>
+            <input
+              type="password"
+               name="cpassword"
+               value={formData.cpassword|| ""}
+               onChange={handleInputChange}
+              placeholder="********"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.cpassword ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
             />
+            {errors.cpassword && <span className="text-base text-red-500">{errors.cpassword}</span>}
           </div>
         </div>
       ),
@@ -85,25 +131,92 @@ const Register = () => {
       title: "Datos del comercio",
       description: "",
       form: (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div>
+        // <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className={`step-1 grid grid-cols-1 lg:grid-cols-2 gap-4`}>
+             <div>
             <label className="block text-sm font-medium text-gray-700">
-              Document Type
-            </label>
-            <select className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500">
-              <option value="id">ID Card</option>
-              <option value="passport">Passport</option>
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Document Number
+              Nombre comercial de la empresa
             </label>
             <input
               type="text"
-              placeholder="123456789"
-              className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              name="ncomercial"
+              value={formData.ncomercial|| ""}
+              onChange={handleInputChange}
+              placeholder="Negocio"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.ncomercial ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
             />
+               {errors.ncomercial && <span className="text-base text-red-500">{errors.ncomercial}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              NIT con digito de verificacion
+            </label>
+            <input
+              type="text"
+              name="Nit"
+              value={formData.Nit|| ""}
+              onChange={handleInputChange}
+              placeholder="3102387640"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.Nit ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+           />
+            {errors.Nit && <span className="text-base text-red-500">{errors.Nit}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Tipo de documento del representante legal
+            </label>
+            <select name="tdocum"  value={formData.tdocum || ""}
+              onChange={handleInputChange}
+            // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" 
+            className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+              errors.tdocum ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+            }`}
+            >
+              <option value="">Tipo de documento</option>
+              <option value="CC">Cédula de ciudadania</option>
+              <option value="CE">Cédula de extranjeria</option>
+            </select>
+            {errors.tdocum && <span className="text-base text-red-500">{errors.tdocum}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Número de documento del representante legal
+            </label>
+            <input
+              type="text"
+              name="drepresentante"
+              value={formData.drepresentante|| ""}
+              onChange={handleInputChange}
+              placeholder="123456789"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.drepresentante ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+            />
+               {errors.drepresentante && <span className="text-base text-red-500">{errors.drepresentante}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Nombre completo representante legal
+            </label>
+            <input
+              type="text"
+              name="nrepresentante"
+              value={formData.nrepresentante|| ""}
+              onChange={handleInputChange}
+              placeholder="Juan"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.nrepresentante ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+          />
+          {errors.nrepresentante && <span className="text-base text-red-500">{errors.nrepresentante}</span>}
           </div>
         </div>
       ),
@@ -112,15 +225,79 @@ const Register = () => {
       title: "Información bancaria",
       description: "Informacion del banco donde se consigna el recaudo del comercio.",
       form: (
-        <p className="text-gray-600">
-          Please review your details before submitting.
-        </p>
+        // <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className={`step-2 grid grid-cols-1 lg:grid-cols-2 gap-4`}>
+      <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Tipo de cuenta bancaria
+            </label>
+            <select name="tcuenta"  value={formData.tcuenta || ""}
+              onChange={handleInputChange}
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.tcuenta ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}>
+              <option value="">Tipo de cuenta</option>
+              <option value="CA">Cuenta ahorros</option>
+              <option value="CC">Cuenta corriente</option>
+            </select>
+            {errors.tcuenta && <span className="text-base text-red-500">{errors.tcuenta}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Número de cuenta bancaria
+            </label>
+            <input
+              type="text"
+              name="ncuenta"
+              value={formData.ncuenta|| ""}
+              onChange={handleInputChange}
+              placeholder="123456789"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.ncuenta ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+            />
+              {errors.ncuenta && <span className="text-base text-red-500">{errors.ncuenta}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+             Entidad bancaria
+            </label>
+            <select name="banco"  value={formData.banco || ""}
+              onChange={handleInputChange}
+            // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+            className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+              errors.banco ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+            }`}
+           >
+              <option value="">Elige tu banco</option>
+              <option value="BA">Bancolombia</option>
+              <option value="AV">Av villas</option>
+            </select>
+            {errors.banco && <span className="text-base text-red-500">{errors.banco}</span>}
+          </div>
+        </div>
       ),
     },
   ];
-
   const nextStep = () => {
-    if (currentStep < steps.length - 1) {
+    const currentForm = document.querySelectorAll(
+      `.step-${currentStep} input, .step-${currentStep} select`
+    );
+    let isValid = true;
+    let newErrors = {};
+
+    currentForm.forEach((field) => {
+      if (!field.value.trim()) {
+        isValid = false;
+        newErrors[field.name] = "Este campo es obligatorio.";
+      }
+    });
+
+    setErrors(newErrors);
+
+    if (isValid && currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -188,7 +365,7 @@ const Register = () => {
             <div className="border border-gray-300 p-6 rounded-md">
               {steps[currentStep].form}
             </div>
-            <div className="flex items-center gap-4 mt-6">
+            <div className="flex items-center gap-4 mt-6 pb-3">
               {currentStep > 0 && (
                 <button
                   onClick={prevStep}
