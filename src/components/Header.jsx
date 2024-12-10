@@ -36,7 +36,7 @@ const Header = () => {
       const url = `${window.location.origin}/register`;
       window.open(url, "_blank");
     } else {
-      window.open("https://admin.ipaid.com.co/register", "_blank");
+      window.open("https://ipaid.com.co/register", "_blank");
     }
   };
   return (
