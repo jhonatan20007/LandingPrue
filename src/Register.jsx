@@ -3,6 +3,7 @@ import ButtonGradient from "./assets/svg/ButtonGradient";
 import HeaderR from "./components/HeaderR";
 import Section from "./components/Section";
 import Footer from "./components/Footer";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 
 const Register = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -15,6 +16,8 @@ const Register = () => {
       [name]: value,
     });
   };
+  const [showPassword, setShowPassword] = useState(false);
+  const [cshowPassword, csetShowPassword] = useState(false);
   const steps = [
     {
       title: "Datos básicos",
@@ -44,15 +47,21 @@ const Register = () => {
               Celular
             </label>
             <input
-              type="text"
+              type="number"
               name="celular"
               value={formData.celular|| ""}
               onChange={handleInputChange}
+              onInput={(e) => {
+                if (e.target.value.length > 10) {
+                  e.target.value = e.target.value.slice(0, 10); // Limita a 10 dígitos
+                }
+              }}
               placeholder="3102387640"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.celular ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
+              onKeyDown={(e) => e.key === 'e' && e.preventDefault()} 
+              inputMode="numeric" 
             />
                {errors.celular && <span className="text-base text-red-500">{errors.celular}</span>}
           </div>
@@ -66,7 +75,6 @@ const Register = () => {
               value={formData.correo|| ""}
               onChange={handleInputChange}
               placeholder="example@mail.com"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.correo ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
@@ -83,7 +91,6 @@ const Register = () => {
                value={formData.ccorreo|| ""}
               onChange={handleInputChange}
               placeholder="example@mail.com"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.ccorreo ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
@@ -94,34 +101,58 @@ const Register = () => {
             <label className="block text-sm font-medium text-gray-700">
               Contraseña
             </label>
+            <div className="relative">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               value={formData.password|| ""}
               onChange={handleInputChange}
               placeholder="********"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.password ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
            />
+                 <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="absolute inset-y-0 right-2 flex items-center text-gray-500 hover:text-gray-700"
+        >
+          {showPassword ? (
+            <EyeSlashIcon className="w-5 h-5" />
+          ) : (
+            <EyeIcon className="w-5 h-5" />
+          )}
+        </button>
+           </div>
                 {errors.password && <span className="text-base text-red-500">{errors.password}</span>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Confirmar contraseña
             </label>
+            <div className="relative">
             <input
-              type="password"
+              type={cshowPassword ? "text" : "password"}
                name="cpassword"
                value={formData.cpassword|| ""}
                onChange={handleInputChange}
               placeholder="********"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.cpassword ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
             />
+                <button
+          type="button"
+          onClick={() => csetShowPassword(!cshowPassword)}
+          className="absolute inset-y-0 right-2 flex items-center text-gray-500 hover:text-gray-700"
+        >
+          {cshowPassword ? (
+            <EyeSlashIcon className="w-5 h-5" />
+          ) : (
+            <EyeIcon className="w-5 h-5" />
+          )}
+        </button>
+            </div>
             {errors.cpassword && <span className="text-base text-red-500">{errors.cpassword}</span>}
           </div>
         </div>
@@ -131,7 +162,6 @@ const Register = () => {
       title: "Datos del comercio",
       description: "",
       form: (
-        // <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className={`step-1 grid grid-cols-1 lg:grid-cols-2 gap-4`}>
              <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -143,7 +173,6 @@ const Register = () => {
               value={formData.ncomercial|| ""}
               onChange={handleInputChange}
               placeholder="Negocio"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.ncomercial ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
@@ -157,10 +186,10 @@ const Register = () => {
             <input
               type="text"
               name="Nit"
+                maxLength="12"
               value={formData.Nit|| ""}
               onChange={handleInputChange}
               placeholder="3102387640"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.Nit ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
@@ -172,8 +201,7 @@ const Register = () => {
               Tipo de documento del representante legal
             </label>
             <select name="tdocum"  value={formData.tdocum || ""}
-              onChange={handleInputChange}
-            // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500" 
+              onChange={handleInputChange} 
             className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
               errors.tdocum ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
             }`}
@@ -189,15 +217,21 @@ const Register = () => {
               Número de documento del representante legal
             </label>
             <input
-              type="text"
+              type="number"
               name="drepresentante"
               value={formData.drepresentante|| ""}
               onChange={handleInputChange}
               placeholder="123456789"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              onInput={(e) => {
+                if (e.target.value.length > 10) {
+                  e.target.value = e.target.value.slice(0, 10); // Limita a 10 dígitos
+                }
+              }}
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.drepresentante ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
+              onKeyDown={(e) => e.key === 'e' && e.preventDefault()} 
+              inputMode="numeric" 
             />
                {errors.drepresentante && <span className="text-base text-red-500">{errors.drepresentante}</span>}
           </div>
@@ -211,7 +245,6 @@ const Register = () => {
               value={formData.nrepresentante|| ""}
               onChange={handleInputChange}
               placeholder="Juan"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.nrepresentante ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
@@ -225,7 +258,6 @@ const Register = () => {
       title: "Información bancaria",
       description: "Informacion del banco donde se consigna el recaudo del comercio.",
       form: (
-        // <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className={`step-2 grid grid-cols-1 lg:grid-cols-2 gap-4`}>
       <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -233,13 +265,12 @@ const Register = () => {
             </label>
             <select name="tcuenta"  value={formData.tcuenta || ""}
               onChange={handleInputChange}
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.tcuenta ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}>
               <option value="">Tipo de cuenta</option>
-              <option value="CA">Cuenta ahorros</option>
-              <option value="CC">Cuenta corriente</option>
+              <option value="CA">Ahorros</option>
+              <option value="CC">Corriente</option>
             </select>
             {errors.tcuenta && <span className="text-base text-red-500">{errors.tcuenta}</span>}
           </div>
@@ -248,15 +279,21 @@ const Register = () => {
               Número de cuenta bancaria
             </label>
             <input
-              type="text"
+              type="number"
               name="ncuenta"
               value={formData.ncuenta|| ""}
               onChange={handleInputChange}
               placeholder="123456789"
-              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              onInput={(e) => {
+                if (e.target.value.length > 15) {
+                  e.target.value = e.target.value.slice(0, 15); // Limita a 15 dígitos
+                }
+              }}
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
                 errors.ncuenta ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
+              onKeyDown={(e) => e.key === 'e' && e.preventDefault()} 
+              inputMode="numeric" 
             />
               {errors.ncuenta && <span className="text-base text-red-500">{errors.ncuenta}</span>}
           </div>
@@ -266,7 +303,6 @@ const Register = () => {
             </label>
             <select name="banco"  value={formData.banco || ""}
               onChange={handleInputChange}
-            // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
             className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
               errors.banco ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
             }`}
@@ -274,6 +310,13 @@ const Register = () => {
               <option value="">Elige tu banco</option>
               <option value="BA">Bancolombia</option>
               <option value="AV">Av villas</option>
+              <option value="DA">Davivienda</option>
+              <option value="BO">Banco de bogota</option>
+              <option value="BB">BBVA</option>
+              <option value="OC">Banco de occidente</option>
+              <option value="CI">Citibank</option>
+              <option value="CA">Banco caja social</option>
+              <option value="Co">Scotiabank colpatria</option>
             </select>
             {errors.banco && <span className="text-base text-red-500">{errors.banco}</span>}
           </div>
@@ -281,7 +324,7 @@ const Register = () => {
       ),
     },
   ];
-  const nextStep = () => {
+  const validate=()=>{
     const currentForm = document.querySelectorAll(
       `.step-${currentStep} input, .step-${currentStep} select`
     );
@@ -294,10 +337,44 @@ const Register = () => {
         newErrors[field.name] = "Este campo es obligatorio.";
       }
     });
-
+    if (currentStep==0){
+      const inputValuecorreo = [...currentForm].find(el => el.name === 'correo')?.value;
+      const inputValueccorreo = [...currentForm].find(el => el.name === 'ccorreo')?.value;
+      const inputValuecelular = [...currentForm].find(el => el.name === 'celular')?.value;
+      const inputValuepassword=[...currentForm].find(el => el.name === 'password')?.value;
+      const inputValuecpassword=[...currentForm].find(el => el.name === 'cpassword')?.value;
+      var reg =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/;
+      if (!reg.test(inputValuecorreo)) {
+        isValid = false;
+        newErrors['correo'] = "Ingrese un correo valido.";
+      }
+      if (inputValuecorreo!=inputValueccorreo) {
+        isValid = false;
+        newErrors['ccorreo'] = "Correo electronico no coincide.";
+      }
+      // if (!reg.test(inputValueccorreo)) {
+      //   isValid = false;
+      //   newErrors['ccorreo'] = "Ingrese un correo valido.";
+      // }
+      if(inputValuecelular.length<10 && inputValuecelular.length>0){
+        isValid = false;
+        newErrors['celular'] = "Numero de celular no valido.";
+      }
+      if (inputValuepassword!=inputValuecpassword) {
+        isValid = false;
+        newErrors['cpassword'] = "Contraseña no coincide.";
+      }
+      if(inputValuepassword.length<8 && inputValuepassword.length>0){
+        isValid = false;
+        newErrors['password'] = "La contraseña debe tener minimo 8 caracteres.";
+      }
+    }
     setErrors(newErrors);
-
-    if (isValid && currentStep < steps.length - 1) {
+    return isValid;
+  }
+  const nextStep = () => {
+    if (validate() && currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
