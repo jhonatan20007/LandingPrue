@@ -3,6 +3,7 @@ import ButtonGradient from "./assets/svg/ButtonGradient";
 import HeaderR from "./components/HeaderR";
 import Section from "./components/Section";
 import Footer from "./components/Footer";
+import Swal from "sweetalert2";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 
 const Register = () => {
@@ -181,7 +182,7 @@ const Register = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              NIT con digito de verificacion
+              NIT
             </label>
             <input
               type="text"
@@ -269,8 +270,8 @@ const Register = () => {
                 errors.tcuenta ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}>
               <option value="">Tipo de cuenta</option>
-              <option value="CA">Ahorros</option>
-              <option value="CC">Corriente</option>
+              <option value="Ahorros">Ahorros</option>
+              <option value="Corriente">Corriente</option>
             </select>
             {errors.tcuenta && <span className="text-base text-red-500">{errors.tcuenta}</span>}
           </div>
@@ -309,13 +310,13 @@ const Register = () => {
            >
               <option value="">Elige tu banco</option>
               <option value="BA">Bancolombia</option>
-              <option value="AV">Av villas</option>
+              <option value="AV">Av Villas</option>
               <option value="DA">Davivienda</option>
-              <option value="BO">Banco de bogota</option>
+              <option value="BO">Banco de Bogota</option>
               <option value="BB">BBVA</option>
-              <option value="OC">Banco de occidente</option>
+              <option value="OC">Banco de Occidente</option>
               <option value="CI">Citibank</option>
-              <option value="CA">Banco caja social</option>
+              <option value="CA">Banco Caja Social</option>
               <option value="Co">Scotiabank colpatria</option>
             </select>
             {errors.banco && <span className="text-base text-red-500">{errors.banco}</span>}
@@ -374,9 +375,14 @@ const Register = () => {
     return isValid;
   }
   const nextStep = () => {
-    if (validate() && currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
+
+    if (validate()){
+    if(currentStep < steps.length - 1) {
+    setCurrentStep(currentStep + 1);
+    }else{
+      savecomerceanduser(formData);
     }
+  }
   };
 
   const prevStep = () => {
@@ -385,6 +391,39 @@ const Register = () => {
     }
   };
 
+  const savecomerceanduser = (obj) => {
+    fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Comerceanduser`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setformData({});
+        setCurrentStep(0);
+        Swal.fire({
+          icon: "success",
+          title: "¡Bienvenido a iPaid!",
+          text: "Nos pondremos en contacto contigo.",
+        });
+      })
+      .catch((error) => {
+        // setError(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Error creando el comercio.",
+        });
+        console.log("error", error);
+      });
+  };
   return (
     <>
     <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">

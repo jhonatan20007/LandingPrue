@@ -88,9 +88,9 @@ const Header = () => {
         >
           New account
         </a> */}
-        {/* <a target="_blank"  onClick={handleNavigation} >
+        <a target="_blank"  onClick={handleNavigation} >
           <Button className="hidden lg:flex m-1">Crea una cuenta</Button>
-        </a> */}
+        </a>
         <a target="_blank" href="https://admin.ipaid.com.co/">
           <Button className="hidden lg:flex m-1">Iniciar sesión</Button>
         </a>
