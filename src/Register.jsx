@@ -32,16 +32,16 @@ const Register = () => {
             </label>
             <input
               type="text"
-              name="fullName"
-              value={formData.fullName|| ""}
+              name="nombrediligencia"
+              value={formData.nombrediligencia|| ""}
               onChange={handleInputChange}
               placeholder="John Perez"
               // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
               className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
-                errors.fullName ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+                errors.nombrediligencia ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
               }`}
             />
-              {errors.fullName && <span className="text-base text-red-500">{errors.fullName}</span>}
+              {errors.nombrediligencia && <span className="text-base text-red-500">{errors.nombrediligencia}</span>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -309,17 +309,56 @@ const Register = () => {
             }`}
            >
               <option value="">Elige tu banco</option>
-              <option value="BA">Bancolombia</option>
-              <option value="AV">Av Villas</option>
-              <option value="DA">Davivienda</option>
-              <option value="BO">Banco de Bogota</option>
-              <option value="BB">BBVA</option>
-              <option value="OC">Banco de Occidente</option>
-              <option value="CI">Citibank</option>
-              <option value="CA">Banco Caja Social</option>
-              <option value="Co">Scotiabank colpatria</option>
+              <option value="Bancolombia">Bancolombia</option>
+              <option value="Av Villas">Av Villas</option>
+              <option value="Davivienda">Davivienda</option>
+              <option value="Banco de Bogota">Banco de Bogota</option>
+              <option value="BBVA">BBVA</option>
+              <option value="Banco de Occidente">Banco de Occidente</option>
+              <option value="Citibank">Citibank</option>
+              <option value="Banco Caja Social">Banco Caja Social</option>
+              <option value="Scotiabank Colpatria">Scotiabank Colpatria</option>
             </select>
             {errors.banco && <span className="text-base text-red-500">{errors.banco}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Nombre titular de la cuenta
+            </label>
+            <input
+              type="text"
+              name="ntitularcuenta"
+              value={formData.ntitularcuenta|| ""}
+              onChange={handleInputChange}
+              placeholder="Juan"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.ntitularcuenta ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+          />
+          {errors.ntitularcuenta && <span className="text-base text-red-500">{errors.ntitularcuenta}</span>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Número de documento del titular de la cuenta
+            </label>
+            <input
+              type="number"
+              name="dtitularcuenta"
+              value={formData.dtitularcuenta|| ""}
+              onChange={handleInputChange}
+              placeholder="123456789"
+              onInput={(e) => {
+                if (e.target.value.length > 10) {
+                  e.target.value = e.target.value.slice(0, 10); // Limita a 10 dígitos
+                }
+              }}
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.dtitularcuenta ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+              onKeyDown={(e) => e.key === 'e' && e.preventDefault()} 
+              inputMode="numeric" 
+            />
+               {errors.dtitularcuenta && <span className="text-base text-red-500">{errors.dtitularcuenta}</span>}
           </div>
         </div>
       ),
@@ -411,7 +450,7 @@ const Register = () => {
         Swal.fire({
           icon: "success",
           title: "¡Bienvenido a iPaid!",
-          text: "Nos pondremos en contacto contigo.",
+          text: "Un asesor se comunicará contigo.",
         });
       })
       .catch((error) => {
