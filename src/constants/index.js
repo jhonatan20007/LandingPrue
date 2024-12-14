@@ -72,7 +72,7 @@ export const navigation = [
   {
     id: "4",
     title: "Crea una cuenta",
-    url: "https://admin.ipaid.com.co/",
+    url: "https://ipaid.com.co/register/",
     onlyMobile: true,
   },
   {
