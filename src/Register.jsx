@@ -10,11 +10,18 @@ const Register = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [errors, setErrors] = useState({}); 
   const [formData, setformData] = useState({});  
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setformData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  // };
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, type, checked, value } = e.target;
     setformData({
       ...formData,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
   const [showPassword, setShowPassword] = useState(false);
@@ -360,6 +367,26 @@ const Register = () => {
             />
                {errors.dtitularcuenta && <span className="text-base text-red-500">{errors.dtitularcuenta}</span>}
           </div>
+          <div>        
+    <div className="mt-4 flex items-center"  style={{ colorScheme: 'light' }}>
+      <input
+        type="checkbox"
+        id="aceptaTerminos"
+        name="aceptaTerminos"
+        checked={formData.aceptaTerminos || false}
+        onChange={handleInputChange}
+          className=" h-4 w-4
+    accent-white
+    border
+    border-gray-300
+    rounded
+    cursor-pointer"
+          />
+      <label htmlFor="aceptaTerminos" className="ml-2 block text-sm text-gray-700 cursor-pointer">
+      Acepto politicas de tratamiento de datos de acuerdo a la ley 1581 de 2012.</label>
+    </div>
+    {errors.aceptaTerminos && <span className="text-base text-red-500">{errors.aceptaTerminos}</span>}
+    </div>
         </div>
       ),
     },
@@ -410,6 +437,14 @@ const Register = () => {
         newErrors['password'] = "La contraseña debe tener minimo 8 caracteres.";
       }
     }
+   else if (currentStep==2){
+    const inputterminos = [...currentForm].find(el => el.name === 'aceptaTerminos')?.checked;
+    if(!inputterminos){
+      isValid = false;
+      newErrors['aceptaTerminos'] = "Debes aceptar las politicas de tratamiento de datos.";
+    }
+    console.log(inputterminos);
+   }
     setErrors(newErrors);
     return isValid;
   }
