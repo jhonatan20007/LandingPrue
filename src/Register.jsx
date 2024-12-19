@@ -10,6 +10,7 @@ const Register = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [errors, setErrors] = useState({}); 
   const [formData, setformData] = useState({});  
+  const [isBusy, setIsBusy] = useState(false);
   // const handleInputChange = (e) => {
   //   const { name, value } = e.target;
   //   setformData({
@@ -466,7 +467,9 @@ const Register = () => {
   };
 
   const savecomerceanduser = (obj) => {
+    setIsBusy(true);
     fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Comerceanduser`, {
+      // fetch(`http://localhost:8080/IpaidLanding/Comerceanduser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -485,8 +488,9 @@ const Register = () => {
         Swal.fire({
           icon: "success",
           title: "¡Bienvenido a iPaid!",
-          text: "Un asesor se comunicará contigo.",
+          text: "Un asesor se comunicará pronto contigo.",
         });
+        setIsBusy(false);
       })
       .catch((error) => {
         // setError(error.message);
@@ -495,6 +499,7 @@ const Register = () => {
           title: "Oops...",
           text: "Error creando el comercio.",
         });
+        setIsBusy(false);
         console.log("error", error);
       });
   };
@@ -578,6 +583,37 @@ const Register = () => {
           </div>
         </div>
     </Section>
+    {isBusy && (
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-50">
+          {/* Spinner */}
+          <svg
+            className="animate-spin h-12 w-12 text-white mb-4"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 0 1 8-8V0C5.373 
+              0 0 5.373 0 12h4z"
+            ></path>
+          </svg>
+          
+          {/* Mensaje debajo del spinner */}
+          <span className="text-white text-lg">
+            Estamos procesando su solicitud...
+          </span>
+        </div>
+      )}
     <Footer />
     </div>
     <ButtonGradient />
