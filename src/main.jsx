@@ -16,7 +16,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         {/* Ruta para la página principal */}
         <Route path="/" element={<App />} />
         {/* Ruta para el componente Register */}
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} /> */}
+        <Route path="/register/:encodedData?" element={<Register />} />
       </Routes>
     </Router>
   </React.StrictMode>

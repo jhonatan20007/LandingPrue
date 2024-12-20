@@ -5,11 +5,28 @@ import Section from "./components/Section";
 import Footer from "./components/Footer";
 import Swal from "sweetalert2";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
+import { json, useParams } from "react-router-dom";
 
 const Register = () => {
+  const { encodedData } = useParams();
+  let firma=false;
+  let decodedData = {ncomercio:'',idc:''};
+
+  if (encodedData) {
+    firma=true;
+    try {
+      // Decodificar Base64
+      let decodedString = atob(encodedData);
+       decodedData=JSON.parse(decodedString);
+    } catch (error) {
+      console.error("Error al decodificar datos:", error);
+    }
+  }
+  
   const [currentStep, setCurrentStep] = useState(0);
   const [errors, setErrors] = useState({}); 
   const [formData, setformData] = useState({});  
+  const [formDatasig, setformDatasig] = useState({});  
   const [isBusy, setIsBusy] = useState(false);
   // const handleInputChange = (e) => {
   //   const { name, value } = e.target;
@@ -22,6 +39,13 @@ const Register = () => {
     const { name, type, checked, value } = e.target;
     setformData({
       ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+  const handleInputChangesig = (e) => {
+    const { name, type, checked, value } = e.target;
+    setformDatasig({
+      ...formDatasig,
       [name]: type === "checkbox" ? checked : value,
     });
   };
@@ -459,7 +483,13 @@ const Register = () => {
     }
   }
   };
-
+const signature=()=>{
+  let newErrors = {};
+if (!formDatasig.codigosig){
+  newErrors['codigosig'] = "El codigo de la firma es requerido.";
+}
+setErrors(newErrors);
+}
   const prevStep = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
@@ -511,7 +541,7 @@ const Register = () => {
      crosses
      crossesOffset="lg:translate-y-[5.25rem]"
      customPaddings id="Register">
-<div className="container relative z-2 grid grid-cols-1 lg:grid-cols-3 gap-8">
+     {!firma ? (<div className="container relative z-2 grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="col-span-1">
             <ol className="space-y-8">
               {steps.map((step, index) => (
@@ -581,7 +611,84 @@ const Register = () => {
               </button>
             </div>
           </div>
+        </div>):(
+        // <div className="container relative z-2 flex justify-center items-center min-h-screen">
+          <div className="container relative z-2 flex justify-center items-center">
+         <div className="col-span-2">
+         <h1 className="mb-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white">{decodedData.ncomercio}</h1>
+        <div className="border border-gray-300 p-6 rounded-md mb-1">
+        <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Codigo para firmar
+            </label>
+            <input
+              type="text"
+              name="codigosig"
+              value={formDatasig.codigosig|| ""}
+              onChange={handleInputChangesig}
+              placeholder="23422"
+              maxLength="6"
+              // className="w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+              className={`w-full p-2 border border-gray-300 rounded-md text-gray-700 bg-white focus:outline-none focus:ring-1 ${
+                errors.codigosig ? "focus:ring-red-500 focus:border-red-500" : "focus:ring-indigo-500 focus:border-indigo-500"
+              }`}
+            />
+              {errors.codigosig && <span className="text-base text-red-500">{errors.codigosig}</span>}
+       
+            <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
+            Al ingresar el código confirmo y acepto las condiciones especificadas<br />
+            en los documentos suscritos al firmarlos de forma virtual.            
+            </p>
+          </div>
+
         </div>
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 p-2">
+  {[
+    {
+      title: "Tratamiento Datos",
+      description: "",
+      link: "https://www.example.com/documento1.pdf",
+    },
+    {
+      title: "Contrato Macro iPaid",
+      description: "",
+      link: "https://www.example.com/documento2.pdf",
+    },
+    {
+      title: "Autorización Desembolso",
+      description: "",
+      link: "https://www.example.com/documento3.pdf",
+    },
+  ].map((doc, index) => (
+    <div
+      key={index}
+      className="border border-gray-300 rounded-lg p-6 shadow-md hover:shadow-lg transition cursor-pointer"
+      onClick={() => window.open(doc.link, "_blank")}
+    >
+      <div className="flex items-center space-x-2">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+          alt="PDF"
+          className="w-7 h-7"
+        />
+        <div>
+          <h5 className="text-base font-bold text-gray-800">{doc.title}</h5>
+          <p className="text-sm text-gray-600">{doc.description}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+<div className="flex justify-center items-center">
+        <button
+        onClick={signature}
+        className="mb-1 py-2.5 px-6 text-sm bg-[#081F5C] text-white rounded-lg font-semibold shadow-xs transition-all duration-500"
+        >
+        Firmar
+        </button>
+        </div>
+        </div>
+        </div>)}
     </Section>
     {isBusy && (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-50">
