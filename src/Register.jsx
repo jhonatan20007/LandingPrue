@@ -518,7 +518,7 @@ setErrors(newErrors);
         Swal.fire({
           icon: "success",
           title: "¡Bienvenido a iPaid!",
-          text: "Un asesor se comunicará pronto contigo.",
+          text: "Por favor verifica tu correo y continua el proceso de registro, un asesor se comunicara pronto contigo.",
         });
         setIsBusy(false);
       })
@@ -647,17 +647,17 @@ setErrors(newErrors);
     {
       title: "Tratamiento Datos",
       description: "",
-      link: "https://www.example.com/documento1.pdf",
+      link: "https://ipaidspace.nyc3.cdn.digitaloceanspaces.com/templates/Tratamiento_Datos.pdf",
     },
     {
       title: "Contrato Macro iPaid",
       description: "",
-      link: "https://www.example.com/documento2.pdf",
+      link: "https://ipaidspace.nyc3.cdn.digitaloceanspaces.com/templates/Contrato_Macro_iPaid.pdf",
     },
     {
       title: "Autorización Desembolso",
       description: "",
-      link: "https://www.example.com/documento3.pdf",
+      link: "https://ipaidspace.nyc3.cdn.digitaloceanspaces.com/templates/Autorizaci%C3%B3n_Desembolso.pdf",
     },
   ].map((doc, index) => (
     <div
