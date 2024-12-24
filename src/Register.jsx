@@ -487,8 +487,44 @@ const signature=()=>{
   let newErrors = {};
 if (!formDatasig.codigosig){
   newErrors['codigosig'] = "El codigo de la firma es requerido.";
+  setErrors(newErrors);
+}else{
+  setIsBusy(true);
+  let obj={idc:decodedData.idc,code:formDatasig.codigosig};
+  // fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/signatureipaid`, {
+    fetch(`http://localhost:8080/IpaidLanding/signatureipaid`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      setformDatasig({});
+      Swal.fire({
+        icon: data.type,
+        title: "¡Firma!",
+        text: data.mensaje,
+      });
+      setIsBusy(false);
+    })
+    .catch((error) => {
+      // setError(error.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Error firmando el documento.",
+      });
+      setIsBusy(false);
+      console.log("error", error);
+    });
 }
-setErrors(newErrors);
 }
   const prevStep = () => {
     if (currentStep > 0) {
@@ -498,8 +534,8 @@ setErrors(newErrors);
 
   const savecomerceanduser = (obj) => {
     setIsBusy(true);
-    fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Comerceanduser`, {
-      // fetch(`http://localhost:8080/IpaidLanding/Comerceanduser`, {
+    // fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Comerceanduser`, {
+      fetch(`http://localhost:8080/IpaidLanding/Comerceanduser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
