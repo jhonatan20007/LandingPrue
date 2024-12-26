@@ -511,7 +511,17 @@ if (!formDatasig.codigosig){
         icon: data.type,
         title: "¡Firma!",
         text: data.mensaje,
-      });
+      }).then((result) => {
+        if (data.type!="error"){
+          const isDevelopment = window.location.hostname === "localhost";
+           if (isDevelopment) {
+             const url = `${window.location.origin}/register`;
+             window.location.href=url;
+           } else {
+             window.location.href="https://ipaid.com.co/register";
+           }
+         }
+    });
       setIsBusy(false);
     })
     .catch((error) => {
