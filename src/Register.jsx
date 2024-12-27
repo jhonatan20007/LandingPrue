@@ -491,8 +491,8 @@ if (!formDatasig.codigosig){
 }else{
   setIsBusy(true);
   let obj={idc:decodedData.idc,code:formDatasig.codigosig};
-  // fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/signatureipaid`, {
-    fetch(`http://localhost:8080/IpaidLanding/signatureipaid`, {
+  fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/signatureipaid`, {
+    // fetch(`http://localhost:8080/IpaidLanding/signatureipaid`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -512,16 +512,18 @@ if (!formDatasig.codigosig){
         title: "¡Firma!",
         text: data.mensaje,
       }).then((result) => {
-        if (data.type!="error"){
-          const isDevelopment = window.location.hostname === "localhost";
-           if (isDevelopment) {
-             const url = `${window.location.origin}/register`;
-             window.location.href=url;
-           } else {
-             window.location.href="https://ipaid.com.co/register";
-           }
-         }
-    });
+        if (result.isConfirmed || result.isDismissed) {
+          if (data.type !== "error") {
+            const isDevelopment = window.location.hostname === "localhost";
+            if (isDevelopment) {
+              const url = `${window.location.origin}/register`;
+              window.location.href = url;
+            } else {
+              window.location.href = "https://ipaid.com.co/register";
+            }
+          }
+        }
+      });
       setIsBusy(false);
     })
     .catch((error) => {
@@ -544,8 +546,8 @@ if (!formDatasig.codigosig){
 
   const savecomerceanduser = (obj) => {
     setIsBusy(true);
-    // fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Comerceanduser`, {
-      fetch(`http://localhost:8080/IpaidLanding/Comerceanduser`, {
+    fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Comerceanduser`, {
+      // fetch(`http://localhost:8080/IpaidLanding/Comerceanduser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
