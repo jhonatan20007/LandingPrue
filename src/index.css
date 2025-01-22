@@ -102,3 +102,31 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* Contenedor principal */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: calc(200%); /* Duplicamos el ancho para el efecto infinito */
+  animation: scroll 10s linear infinite;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 100px; /* Ajusta según tus necesidades */
+  margin-right: 10px; /* Espacio entre elementos */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
