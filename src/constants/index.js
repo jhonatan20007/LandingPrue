@@ -39,6 +39,7 @@ import {
   Cosmos,
   Serficenter,
   Softools,
+  acreditar,
   Universal,
 } from "../assets";
 
@@ -93,6 +94,7 @@ export const companyLogos = [
   Serficenter,
   Softools,
   Universal,
+  acreditar
 ];
 
 export const brainwaveServices = [

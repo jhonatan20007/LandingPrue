@@ -21,13 +21,12 @@ const Hero = () => {
       id="hero"
     >
       <div className="container relative" ref={parallaxRef}>
-        <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
-          <h1 className="h1 mb-6">
+        <div className="relative z-1 max-w-[69rem] mx-auto text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
+          {/* <h1 className="h1 mb-6">
             Explora las posibilidades de la
             <span className="text-blue-700">
               &nbsp; transaformación &nbsp;digital{" "}
             </span>
-            {/* &nbsp; {` `} */}
             <span className="inline-block relative">
               iPaid{" "}
               <img
@@ -38,12 +37,27 @@ const Hero = () => {
                 alt="Curve"
               />
             </span>
+          </h1> */}
+          <h1 className="h1 mb-6">
+           Elige <span className="inline-block relative">
+              iPaid{" "}
+              <img
+                src={curve}
+                className="absolute top-full left-0 w-full xl:-mt-2"
+                width={724}
+                height={48}
+                alt="Curve"
+              />
+            </span>
+            <br />
+            <span className="text-blue-700">
+              &nbsp; Fácil, rápido y sin complicaciones{" "}
+            </span>
           </h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-1/80 lg:mb-8">
-            Simplifica tus pagos en un mundo en movimiento. Usado en tiendas,
-            bares, hoteles y gasolineras, iPaid hace que las transacciones sean
-            rápidas y sin complicaciones. Únete a nosotros y transforma tu forma
-            de pagar.
+            Simplifica tus ventas al integrar nuestras soluciones de pago, 
+            desde cuentas bancarias y tarjetas de crédito hasta nuestro propio sistema de crédito. Con iPaid, 
+            agiliza tus transacciones en tiendas físicas y virtuales. Únete a nosotros y transforma tu forma de vender.
           </p>
           <Button href="#contactenos">Empezar ahora</Button>
         </div>
@@ -52,14 +66,18 @@ const Hero = () => {
             <div className="relative bg-n-8 rounded-[1rem]">
               <div className="h-[1.4rem] bg-n-10 rounded-t-[0.9rem]" />
 
-              <div className="aspect-[33/40] rounded-b-[0.9rem] overflow-hidden md:aspect-[688/490] lg:aspect-[1024/796]">
-                <img
+              <div className="aspect-[33/40] rounded-b-[0.9rem] overflow-hidden md:aspect-[688/390] lg:aspect-[1024/696]">
+                {/* <img
                   src={QR_Img}
-                  className="w-full scale-[1.7] translate-y-[8%] md:scale-[1] md:-translate-y-[10%] lg:-translate-y-[8%]"
+                  className="w-full scale-[1.7] translate-y-[8%] md:scale-[1] md:-translate-y-[10%] lg:-translate-y-[1%]"
                   width={1024}
                   height={896}
                   alt="AI"
-                />
+                /> */}
+                <video className="w-full scale-[1.7] translate-y-[8%] md:scale-[1] md:-translate-y-[10%] lg:-translate-y-[1%]" 
+                autoPlay loop muted playsInline >
+                <source src="/ipaidfondov.mp4" type="video/mp4"/>
+                </video>
 
                 <Generating className="absolute left-4 right-4 bottom-5 md:left-1/2 md:right-auto md:bottom-8 md:w-[31rem] md:-translate-x-1/2" />
 

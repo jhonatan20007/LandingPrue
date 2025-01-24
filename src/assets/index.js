@@ -15,6 +15,7 @@ import Credidya from "./Credidya.svg";
 import Cosmos from "./Cosmos.svg";
 import Serficenter from "./Serficenter.svg";
 import Softools from "./Softools.svg";
+import acreditar from "./acreditar.svg";
 import Universal from "./universal.svg";
 import homeSmile from "./home-smile.svg";
 import file02 from "./file-02.svg";
@@ -156,6 +157,7 @@ export {
   Cosmos,
   Serficenter,
   Softools,
+  acreditar,
   Universal,
   QR_Img,
 };
