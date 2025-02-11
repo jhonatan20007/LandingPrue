@@ -55,7 +55,7 @@ const Hero = () => {
             </span>
           </h1>
           <p className="body-1 max-w-3xl mx-auto mb-6 text-n-1/80 lg:mb-8">
-            Simplifica tus ventas al integrar nuestras soluciones de pago, 
+            Simplifica tus ventas al integrar soluciones de pago, 
             desde cuentas bancarias y tarjetas de crédito hasta nuestro propio sistema de crédito. Con iPaid, 
             agiliza tus transacciones en tiendas físicas y virtuales. Únete a nosotros y transforma tu forma de vender.
           </p>
