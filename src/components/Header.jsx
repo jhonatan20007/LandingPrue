@@ -8,11 +8,10 @@ import { HamburgerMenu } from "./design/Header";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({services, handleServices}) => {
   const navigate = useNavigate();
   const pathname = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
-
   const toggleNavigation = () => {
     if (openNavigation) {
       setOpenNavigation(false);
@@ -22,10 +21,17 @@ const Header = () => {
       disablePageScroll();
     }
   };
+  const handleRefreshPage = () =>{
+  // alert("¡Bienvenido a Ipaid!");
+  console.log("¡Bienvenido a Ipaid!");
+  window.location.reload();
+  }
 
   const handleClick = () => {
+    // console.log("services", services);
+    // services
+    services ? handleServices(!services): handleServices(false);
     if (!openNavigation) return;
-
     enablePageScroll();
     setOpenNavigation(false);
   };
@@ -46,8 +52,8 @@ const Header = () => {
       }`}
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-        <a className="block w-[13rem] xl:mr-8" href="#hero">
-          <img src={Ipaid}   alt="Brainwave" 
+        <a className="block w-[13rem] xl:mr-8"  href="#hero">
+          <img src={Ipaid}  onClick={() =>{handleRefreshPage()}}  alt="Brainwave"
             className="w-[45%] max-w-[200px] h-auto object-contain"  />
         </a>
 

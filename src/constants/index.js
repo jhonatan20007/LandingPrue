@@ -41,6 +41,7 @@ import {
   Softools,
   acreditar,
   Universal,
+  linkedin
 } from "../assets";
 
 export const navigation = [
@@ -56,7 +57,7 @@ export const navigation = [
   },
   // {
   //   id: "2",
-  //   title: "How to use",
+  //   title: "Servicios",
   //   url: "#how-to-use",
   // },
   // {
@@ -103,6 +104,24 @@ export const brainwaveServices = [
   "Seamless Integration",
 ];
 
+export const PagosServices = [
+  "Pagos",
+  "Seguridad",
+   "Agilidad",
+  "Soporte",
+];
+export const EnlaceServices = [
+  "Genera tus enlaces",
+  "Administra tus enlaces",
+  "Conecta tu portal",
+  "Enlace de pago",
+];
+export const ConectaServices = [
+  "Widget de pago",
+  "Embebe tu portal",
+  "Conecta tu portal",
+  "Enlace de pago",
+];
 export const brainwaveServicesIcons = [
   recording03,
   recording01,
@@ -328,33 +347,23 @@ export const benefits = [
 
 export const socials = [
   {
-    id: "0",
-    title: "Discord",
-    iconUrl: discordBlack,
-    url: "#",
-  },
-  {
     id: "1",
     title: "Twitter",
     iconUrl: twitter,
-    url: "#",
+    url: "https://x.com/Ipaid",
   },
   {
     id: "2",
     title: "Instagram",
     iconUrl: instagram,
-    url: "#",
+    url: "https://www.instagram.com/ipaid_sas?igsh=bGR5MGQ2MGV2MXE0&utm_source=qr",
   },
   {
     id: "3",
-    title: "Telegram",
-    iconUrl: telegram,
-    url: "#",
-  },
-  {
-    id: "4",
-    title: "Facebook",
-    iconUrl: facebook,
-    url: "#",
-  },
+    title: "Linkedin",
+    iconUrl: linkedin,
+    url: "www.linkedin.com/in/ipaid",
+  }
+
+  
 ];

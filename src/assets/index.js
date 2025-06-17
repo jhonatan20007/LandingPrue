@@ -47,6 +47,7 @@ import slack from "./collaboration/slack.png";
 import service1 from "./services/service-1.png";
 import service2 from "./services/service-2.png";
 import service3 from "./services/service-3.png";
+import service4 from "./services/service-4.png";
 
 import lines from "./pricing/lines.svg";
 import stars from "./pricing/stars.svg";
@@ -82,6 +83,7 @@ import facebook from "./socials/facebook.svg";
 import instagram from "./socials/instagram.svg";
 import telegram from "./socials/telegram.svg";
 import twitter from "./socials/twitter.svg";
+import linkedin from "./socials/linkedin.svg";
 
 export {
   brainwave,
@@ -152,6 +154,7 @@ export {
   instagram,
   telegram,
   twitter,
+  linkedin,
   Ipaid,
   Credidya,
   Cosmos,
@@ -160,4 +163,5 @@ export {
   acreditar,
   Universal,
   QR_Img,
+  service4
 };

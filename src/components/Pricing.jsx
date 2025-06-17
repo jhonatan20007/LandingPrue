@@ -42,12 +42,11 @@ const Pricing = () => {
         </div>
 
         <div className="flex justify-center mt-10">
-          <a
-            className="text-xs font-code font-bold tracking-wider uppercase border-b"
-            href="/pricing"
-          >
+          <span
+            className="text-xs font-code font-bold tracking-wider cursor-pointer uppercase border-b"
+           >
             Mira todo los detalles
-          </a>
+          </span>
         </div>
       </div>
     </Section>

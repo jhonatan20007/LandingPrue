@@ -11,6 +11,8 @@ const HeaderR = () => {
   const pathname = useLocation();
   const [openNavigation, setOpenNavigation] = useState(false);
 
+
+
   const toggleNavigation = () => {
     if (openNavigation) {
       setOpenNavigation(false);
@@ -35,7 +37,7 @@ const HeaderR = () => {
       }`}
     >
       <div className="flex items-center px-5 lg:px-7.5 xl:px-10 max-lg:py-4">
-        <a className="block w-[13rem] xl:mr-8" href="#hero">
+        <a className="block w-[13rem] xl:mr-8" onClick={handleRefreshPage()} href="#hero">
           <img src={Ipaid}   alt="Brainwave" 
             className="w-[45%] max-w-[200px] h-auto object-contain mt-2 mb-2"  />
         </a>
