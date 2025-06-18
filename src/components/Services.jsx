@@ -9,10 +9,21 @@ import {
   VideoBar,
   VideoChatMessage,
 } from "./design/Services";
-
+import { useEffect } from "react";
 import Generating from "./Generating";
+import { use } from "react";
 const Services = ({op}) => {
-  console.log(op);
+  // console.log(op);
+  const SubirPaginaAlIncio = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
+  useEffect(() => {
+    SubirPaginaAlIncio();
+  }, [op]);
   return (
     <Section id="how-to-use">
       <div className="container">

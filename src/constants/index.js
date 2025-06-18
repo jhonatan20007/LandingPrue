@@ -122,6 +122,12 @@ export const ConectaServices = [
   "Conecta tu portal",
   "Enlace de pago",
 ];
+export const ConectaAdministra = [
+  "Revisar transacciones",
+  "Verificar pagos",
+  "Gestionar pagos",
+  
+];
 export const brainwaveServicesIcons = [
   recording03,
   recording01,
@@ -362,7 +368,7 @@ export const socials = [
     id: "3",
     title: "Linkedin",
     iconUrl: linkedin,
-    url: "www.linkedin.com/in/ipaid",
+    url: "https://www.linkedin.com/in/ipaid",
   }
 
   

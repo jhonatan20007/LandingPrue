@@ -1,7 +1,7 @@
 import Section from "../components/Section";
 import Heading from "../components/Heading";
 import { service1, service2, service3, service4,check } from "../assets";
-import { brainwaveServices, brainwaveServicesIcons, ConectaServices } from "../constants";
+import { brainwaveServices, brainwaveServicesIcons, ConectaAdministra } from "../constants";
 import {
   PhotoChatMessage,
   Gradient,
@@ -29,13 +29,14 @@ const MAdmin = () => {
             </div>
 
             <div className="relative z-1 max-w-[17rem] ml-auto">
-              <h4 className="h4 mb-4">Widget</h4>
+              <h4 className="h4 mb-4">Modulo Administrador</h4>
               <p className="body-2 mb-[3rem] text-n-1/80">
-                Conecta tu cuenta de Pagos y muestra un widget de pago en tu sitio web. 
-                Permite a tus clientes pagar directamente desde tu página, mejorando la experiencia de compra.
+                El módulo administrador es una herramienta que permite a los
+                administradores gestionar y supervisar las operaciones de la
+                plataforma de manera eficiente y efectiva.
               </p>
               <ul className="body-2">
-                {ConectaServices.map((item, index) => (
+                {ConectaAdministra.map((item, index) => (
                   <li
                     key={index}
                     className="flex items-start py-4 border-t border-n-6"
