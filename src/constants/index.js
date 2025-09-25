@@ -356,7 +356,7 @@ export const socials = [
     id: "1",
     title: "Twitter",
     iconUrl: twitter,
-    url: "https://x.com/Ipaid",
+    url: "https://x.com/Ipaid_",
   },
   {
     id: "2",
@@ -368,7 +368,7 @@ export const socials = [
     id: "3",
     title: "Linkedin",
     iconUrl: linkedin,
-    url: "https://www.linkedin.com/in/ipaid",
+    url: "https://www.linkedin.com/company/ipaidsas",
   }
 
   

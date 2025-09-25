@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Swal from "sweetalert2";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { json, useParams } from "react-router-dom";
-
+const API_BASE = import.meta.env.VITE_ENPOINTBASEIPAID;
 const Register = () => {
   const { encodedData } = useParams();
   let firma=false;
@@ -28,13 +28,6 @@ const Register = () => {
   const [formData, setformData] = useState({});  
   const [formDatasig, setformDatasig] = useState({});  
   const [isBusy, setIsBusy] = useState(false);
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setformData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
   const handleInputChange = (e) => {
     const { name, type, checked, value } = e.target;
     setformData({
@@ -468,7 +461,7 @@ const Register = () => {
       isValid = false;
       newErrors['aceptaTerminos'] = "Debes aceptar las politicas de tratamiento de datos.";
     }
-    console.log(inputterminos);
+    // console.log(inputterminos);
    }
     setErrors(newErrors);
     return isValid;
@@ -546,8 +539,7 @@ if (!formDatasig.codigosig){
 
   const savecomerceanduser = (obj) => {
     setIsBusy(true);
-    fetch(`https://ipaidapi-tluf8.ondigitalocean.app/IpaidLanding/Comerceanduser`, {
-      // fetch(`http://localhost:8080/IpaidLanding/Comerceanduser`, {
+    fetch(`${API_BASE}/IpaidLanding/Comerceanduser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -563,6 +555,17 @@ if (!formDatasig.codigosig){
       .then((data) => {
         setformData({});
         setCurrentStep(0);
+             console.log(data)
+          // console.log(data)
+        if(data.error){
+            Swal.fire({
+          icon: "error",
+          title: "Error correo ya registrado",
+          text: data.mensaje +"con este correo "+ data.detalle.correo,
+        });
+        setIsBusy(false);
+        return
+        }
         Swal.fire({
           icon: "success",
           title: "¡Bienvenido a iPaid!",
@@ -572,6 +575,7 @@ if (!formDatasig.codigosig){
       })
       .catch((error) => {
         // setError(error.message);
+     
         Swal.fire({
           icon: "error",
           title: "Oops...",
