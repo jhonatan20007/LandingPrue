@@ -41,7 +41,8 @@ import {
   Softools,
   acreditar,
   Universal,
-  linkedin
+  linkedin,
+  benefitCard1
 } from "../assets";
 
 export const navigation = [
@@ -328,7 +329,7 @@ export const benefits = [
     id: "3",
     title: "Enlace",
     text: "Con solo crear tus link de pago puedes vender y gestionar tus pagos en linea sin necesidad de un sitio web.",
-    backgroundUrl: "./src/assets/benefits/card-4.svg",
+    backgroundUrl: benefitCard1,//"./src/assets/benefits/card-4.svg",
     iconUrl: benefitIcon4,
     imageUrl: benefitImage2,
     light: false,

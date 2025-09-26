@@ -66,7 +66,8 @@ import notification2 from "./notification/image-2.png";
 import notification3 from "./notification/image-3.png";
 import notification4 from "./notification/image-4.png";
 
-export const benefitCard1 = () =>  "./benefits/1card.svg";
+// export const benefitCard1 = () =>  
+import benefitCard1 from "./benefits/card-1.svg";
 import benefitCard2 from "./benefits/card-2.svg";
 import benefitCard3 from "./benefits/card-3.svg";
 import benefitCard4 from "./benefits/card-4.svg";
@@ -138,7 +139,7 @@ export {
   notification2,
   notification3,
   notification4,
-  // benefitCard1,
+  benefitCard1,
   benefitCard2,
   benefitCard3,
   benefitCard4,
