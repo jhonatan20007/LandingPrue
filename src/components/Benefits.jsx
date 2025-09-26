@@ -22,9 +22,7 @@ const Benefits = ({services,handleServices}) => {
           {benefits.map((item) => (
             <div
               className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[25rem]"
-              style={{
-                backgroundImage: `url(${card1})`,
-              }}
+              style={{backgroundImage: `url("${card1}")` }}
               key={item.id}
             >
               <div className="relative z-2 flex flex-col min-h-[22rem] p-[2.4rem] ">
