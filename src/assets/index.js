@@ -138,7 +138,7 @@ export {
   notification2,
   notification3,
   notification4,
-  benefitCard1,
+  // benefitCard1,
   benefitCard2,
   benefitCard3,
   benefitCard4,
