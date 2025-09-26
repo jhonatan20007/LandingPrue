@@ -4,7 +4,7 @@ import Section from "./Section";
 import Arrow from "../assets/svg/Arrow";
 import { GradientLight } from "./design/Benefits";
 import ClipPath from "../assets/svg/ClipPath";
-
+import card1 from "../assets/benefits/card-1.svg";
 const Benefits = ({services,handleServices}) => {
   const handleClick = (title) => {
     handleServices(true,title);
@@ -23,7 +23,7 @@ const Benefits = ({services,handleServices}) => {
             <div
               className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[25rem]"
               style={{
-                backgroundImage: `url(${item.backgroundUrl})`,
+                backgroundImage: `url(${card1})`,
               }}
               key={item.id}
             >
