@@ -23,7 +23,7 @@ const Benefits = ({services,handleServices}) => {
             <div
               className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[25rem]"
               style={{
-                backgroundImage: `url(${card1})`,
+                backgroundImage: `url(${item.backgroundUrl})`,
               }}
               key={item.id}
             >
