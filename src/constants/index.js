@@ -304,7 +304,7 @@ export const benefits = [
     id: "0",
     title: "Pagos",
     text: "Acepta pagos con una solución para todo tipo de negocios, desde electronicos a fisicos.",
-    backgroundUrl: "../assets/Softools.svg", //"../src/assets/benefits/card-1.svg",
+    backgroundUrl: "../assets/benefits/card-1.svg", //"../src/assets/benefits/card-1.svg",
     iconUrl: benefitIcon1,
     imageUrl: benefitImage2,
   },
