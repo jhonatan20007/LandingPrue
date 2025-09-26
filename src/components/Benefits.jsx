@@ -39,7 +39,7 @@ const Benefits = ({services,handleServices}) => {
                   />
                   <p className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider">
                    <span onClick={() => handleClick(item.title)} className="cursor-pointer">
-                    Explore more
+                    Explorar
                    </span>
                   </p>
                   <Arrow />
